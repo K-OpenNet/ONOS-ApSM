@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<app features="${project.artifactId}"
+     featuresRepo="mvn:${project.groupId}/${project.artifactId}/${project.version}/xml/features"
+     name="org.onosproject.attack" origin="ON.Lab" version="${project.version}">
+    <description>${project.description}</description>
+    <artifact>mvn:${project.groupId}/${project.artifactId}/${project.version}</artifact>
+    <security>
+        <role>USER</role>
+        <permissions>
+            <app-perm>APP_READ</app-perm>
+            <app-perm>FLOWRULE_READ</app-perm>
+            <app-perm>FLOWRULE_WRITE</app-perm>
+        </permissions>
+    </security>
+</app>
