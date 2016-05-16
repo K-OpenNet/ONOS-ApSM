@@ -49,49 +49,6 @@ public class PolicyGenerator {
      * @param appPerm necessary permission list of analyzed application
      */
     public void genAppxml(String appName, String artifactId, ArrayList<String> appPerm) {
-        Element root = doc.createElement("app");
-        root.setAttribute("name", appName);
-        root.setAttribute("origin", "ON.Lab");
-        root.setAttribute("version", "${project.version}");
-        root.setAttribute("featuresRepo",
-                "mvn:${project.groupId}/${project.artifactId}/${project.version}/xml/features");
-        root.setAttribute("features", "${project.artifactId}");
-        doc.appendChild(root);
-
-        Element description = doc.createElement("description");
-        description.setTextContent("${project.description}");
-        root.appendChild(description);
-
-        Element artifact = doc.createElement("artifact");
-        artifact.setTextContent("mvn:${project.groupId}/${project.artifactId}/${project.version}");
-        root.appendChild(artifact);
-
-        Element security = doc.createElement("security");
-        root.appendChild(security);
-
-        Element role = doc.createElement("role");
-        role.setTextContent("USER");
-        security.appendChild(role);
-
-        Element permissions = doc.createElement("permissions");
-        security.appendChild(permissions);
-
-        for (String perm : appPerm) {
-            Element ap = doc.createElement("app-perm");
-            ap.setTextContent(perm);
-            permissions.appendChild(ap);
-        }
-
-        try {
-            Transformer transformer = TransformerFactory.newInstance().newTransformer();
-            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-            transformer.setOutputProperty(indent, "4");
-            StreamResult xmlFile = new StreamResult(new File(System.getenv(onosRoot)
-                    + appPath + artifactId + xmlFileName));
-            DOMSource ds = new DOMSource(doc);
-            transformer.transform(ds, xmlFile);
-        } catch (TransformerException e) {
-            log.warn("Error while write the policy file : " + e.getMessage());
-        }
+        //TODO: TBD
     }
 }

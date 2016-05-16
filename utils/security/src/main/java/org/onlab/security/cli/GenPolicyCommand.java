@@ -31,41 +31,12 @@ public class GenPolicyCommand extends AbstractShellCommand {
 
     @Override
     protected void execute() {
-        print("[Start] Automatic Policy Generation");
-        ApplicationAdminService applicationAdminService = get(ApplicationAdminService.class);
-        ApplicationId appId = applicationAdminService.getId(name);
-        if (appId == null) {
-            print("No such application: %s", name);
-            return;
-        }
-        Application app = applicationAdminService.getApplication(appId);
-        Set<String> bundleLocations = getBundleLocations(app);
-        if (bundleLocations == null) {
-            print("Bundle information is not available");
-            return;
-        } else {
-            for (String location : bundleLocations) {
-                System.out.println("location" + location);
-            }
-            PolicyGenManager policyManager = new PolicyGenManager(bundleLocations, appId.name());
-            policyManager.start();
-        }
+        //TODO: TBD
     }
 
     private Set<String> getBundleLocations(Application app) {
-        FeaturesService featuresService = get(FeaturesService.class);
-        Set<String> locations = new HashSet<>();
-        for (String name : app.features()) {
-            try {
-                Feature feature = featuresService.getFeature(name);
-                locations.addAll(
-                        feature.getBundles().stream().map(BundleInfo::getLocation).collect(Collectors.toList()));
-            } catch (Exception e) {
-                print("[Exception] Fail to find bundle location.");
-                return locations;
-            }
-        }
-        return locations;
+        //TODO: TBD
+        return null;
     }
 
 }

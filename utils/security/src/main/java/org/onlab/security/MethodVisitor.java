@@ -50,85 +50,34 @@ public class MethodVisitor extends EmptyVisitor {
      * Method to start exploration method of given application.
      */
     public void visit() {
-        if (methodGen.isAbstract() || methodGen.isNative()) {
-            return;
-        }
-        for (InstructionHandle ih = methodGen.getInstructionList().getStart();
-             ih != null; ih = ih.getNext()) {
-            Instruction i = ih.getInstruction();
-
-            if (!visitInstruction(i)) {
-                i.accept(this);
-            }
-        }
+        //TODO: TBD
     }
 
     /**
      * Method to visit the instruction of given application.
      */
     private boolean visitInstruction(Instruction i) {
-        short opcode = i.getOpcode();
-
-        return ((InstructionConstants.INSTRUCTIONS[opcode] != null)
-                && !(i instanceof ConstantPushInstruction)
-                && !(i instanceof ReturnInstruction));
+        //TODO: TBD
     }
 
     @Override
     public void visitINVOKEVIRTUAL(INVOKEVIRTUAL i) {
-        try {
-            File file = new File("/home/sdn/call.txt"); //
-            FileWriter fw = new FileWriter(file, true); //
-            fw.write(String.format(format,"M", i.getReferenceType(constantPoolGen), i.getMethodName(constantPoolGen))+"\n"); //
-            fw.flush();//
-            fw.close();//
-        } catch (IOException e) {
-            return;
-        }
-
-        permissionCheck(i.getReferenceType(constantPoolGen).toString(), i.getMethodName(constantPoolGen));
+        //TODO: TBD
     }
 
     @Override
     public void visitINVOKEINTERFACE(INVOKEINTERFACE i) {
-        try {
-            File file = new File("/home/sdn/call.txt"); //
-            FileWriter fw = new FileWriter(file, true); //
-            fw.write(String.format(format,"M", i.getReferenceType(constantPoolGen), i.getMethodName(constantPoolGen))+"\n"); //
-            fw.flush();//
-            fw.close();//
-        } catch (IOException e) {
-            return;
-        }
-        permissionCheck(i.getReferenceType(constantPoolGen).toString(), i.getMethodName(constantPoolGen));
+        //TODO: TBD
     }
 
     @Override
     public void visitINVOKESPECIAL(INVOKESPECIAL i) {
-        try {
-            File file = new File("/home/sdn/call.txt"); //
-            FileWriter fw = new FileWriter(file, true); //
-            fw.write(String.format(format,"M", i.getReferenceType(constantPoolGen), i.getMethodName(constantPoolGen))+"\n"); //
-            fw.flush();//
-            fw.close();//
-        } catch (IOException e) {
-            return;
-        }
-        permissionCheck(i.getReferenceType(constantPoolGen).toString(), i.getMethodName(constantPoolGen));
+        //TODO: TBD
     }
 
     @Override
     public void visitINVOKESTATIC(INVOKESTATIC i) {
-        try {
-            File file = new File("/home/sdn/call.txt"); //
-            FileWriter fw = new FileWriter(file, true); //
-            fw.write(String.format(format,"M", i.getReferenceType(constantPoolGen), i.getMethodName(constantPoolGen))+"\n"); //
-            fw.flush();//
-            fw.close();//
-        } catch (IOException e) {
-            return;
-        }
-        permissionCheck(i.getReferenceType(constantPoolGen).toString(), i.getMethodName(constantPoolGen));
+        //TODO: TBD
     }
 
     /**
@@ -137,9 +86,6 @@ public class MethodVisitor extends EmptyVisitor {
      * @param visitMethod current invoked method name
      */
     public void permissionCheck(String visitClass, String visitMethod) {
-        String key = permissionComparer.check(visitClass, visitMethod);
-        if (!permSet.contains(key) && key != null) {
-            permSet.add(key);
-        }
+        //TODO: TBD
     }
 }

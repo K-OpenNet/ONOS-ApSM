@@ -41,25 +41,8 @@ public class PolicyGenManager {
     private String artifactId;
 
     public PolicyGenManager(Set<String> locations, String name) {
-        appName = name;
-        appPermSet = new ArrayList<>();
-        jarPaths = new ArrayList<>();
-        homePath = System.getenv("HOME");
-        boolean feature = true;
-        String[] bundleLocations = locations.toArray(new String[locations.size()]);
-
-        for (String bundleLocation : bundleLocations) {
-            if (feature) {
-                artifactId = getArtifactId(bundleLocation);
-            }
-            jarPaths.add(makeJarpath(bundleLocation));
-            feature = false;
-        }
-        System.out.println("app Name = " + appName);
-        for (String location : locations) {
-            System.out.println("location : " + location);
-        }
-        System.out.println("Policy gen");
+        //TODO: TBD
+        return null;
     }
 
     /**
@@ -68,17 +51,8 @@ public class PolicyGenManager {
      * @return location of bundle jar file
      */
     private String makeJarpath(String bundleLocation) {
-        String[] parsedLocation = locationParser(bundleLocation);
-        String jarPath = "";
-
-        jarPath = jarPath + homePath + defaultRepoPath;
-        for (String loc : parsedLocation) {
-            jarPath = jarPath + loc + "/";
-        }
-        jarPath = jarPath + parsedLocation[parsedLocation.length - 2] + "-"
-                + parsedLocation[parsedLocation.length - 1] + ".jar";
-
-        return jarPath;
+        //TODO: TBD
+        return null;
     }
 
     /**
@@ -87,11 +61,8 @@ public class PolicyGenManager {
      * @return parsed path
      */
     private String[] locationParser(String bundleLocation) {
-        String[] parsedPath = bundleLocation.split("/");
-        parsedPath[0] = parsedPath[0].substring(parsedPath[0].indexOf(':') + 1, parsedPath[0].length());
-        parsedPath[0] = parsedPath[0].replace('.', '/');
-
-        return parsedPath;
+        //TODO: TBD
+        return null;
     }
 
     /**
@@ -100,57 +71,14 @@ public class PolicyGenManager {
      * @return artifactId of app
      */
     private String getArtifactId(String bundleLocation) {
-        String[] parsedPath = bundleLocation.split("/");
-        String[] sparsedPath = parsedPath[1].split("-");
-        return sparsedPath[2];
+        //TODO: TBD
+        return null;
     }
 
     /**
      * Start point of the policy generation.
      */
     public void start() {
-
-
-        ClassParser cp;
-
-        try {
-            for (String bundlePath : jarPaths) {
-                if (bundlePath != null) {
-                    File bundleFile = new File(bundlePath);
-
-                    if (!bundleFile.exists()) {
-                        log.warn("Jar file " + bundlePath + "does not exist" + "\n");
-                    }
-
-                    JarFile bundleJar = new JarFile(bundleFile);
-                    Enumeration<JarEntry> bundleEntries = bundleJar.entries();
-                    File file = new File("/home/sdn/call.txt"); //
-                    FileWriter fw = new FileWriter(file, true); //
-                    fw.write("<"+bundlePath+">"+"\n"); //
-                    fw.flush();//
-                    fw.close();//
-                    while (bundleEntries.hasMoreElements()) {
-                        JarEntry entry = bundleEntries.nextElement();
-                        if (entry.isDirectory()) {
-                            continue;
-                        }
-
-                        if (!entry.getName().endsWith(".class")) {
-                            continue;
-                        }
-
-                        cp = new ClassParser(bundlePath, entry.getName());
-                        ClassVisitor classVisitor = new ClassVisitor(cp.parse(), appPermSet);
-                        classVisitor.start();
-
-                    }
-
-                    PolicyGenerator xg = new PolicyGenerator();
-                    xg.genAppxml(appName, artifactId, appPermSet);
-                }
-            }
-        } catch (IOException e) {
-            log.warn("Error while processing bundle jar file : " + e.getMessage());
-        }
+        //TODO: TBD
     }
 }

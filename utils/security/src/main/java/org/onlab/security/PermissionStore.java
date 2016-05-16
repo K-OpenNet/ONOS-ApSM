@@ -42,30 +42,7 @@ public final class PermissionStore {
      * Method to set the permission list.
      */
     public void setPermList() {
-
-        NodeList classNodes = doc.getElementsByTagName(xmlTag);
-
-        for (int i = 0; i < classNodes.getLength(); i++) {
-            for (Node classNode = classNodes.item(i).getFirstChild(); classNode != null;
-                 classNode = classNode.getNextSibling()) {
-                if (classNode.getNodeName().equals(nullText)) {
-                    continue;
-                }
-
-                for (Node methodNode = classNode.getFirstChild(); methodNode != null;
-                     methodNode = methodNode.getNextSibling()) {
-                    if (methodNode.getNodeName().equals(nullText)) {
-                        continue;
-                    }
-                    int key = (classNode.getNodeName().hashCode()) ^ (methodNode.getNodeName().hashCode());
-                    String value = methodNode.getTextContent();
-
-                    if (permList.get(key) == null) {
-                        permList.put(key, value);
-                    }
-                }
-            }
-        }
+        //TODO: TBD
     }
 
     /**

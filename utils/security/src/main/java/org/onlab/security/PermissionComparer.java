@@ -27,15 +27,7 @@ public class PermissionComparer {
      * @return matched permission
      */
     private String appPermcheck(String visitClass, String visitMethod) {
-
-        PermissionStore permStore = PermissionStore.getInstance();
-        if (permStore.getPermList().isEmpty()) {
-            setStorePermList(permStore);
-        }
-        HashMap<Integer, String> permList = getStorePermList(permStore);
-        int key = (visitClass.hashCode()) ^ (visitMethod.hashCode());
-        String value = permList.get(key);
-        return value;
+        //TODO: TBD
     }
 
     /**

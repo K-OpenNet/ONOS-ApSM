@@ -26,40 +26,27 @@ public class ClassVisitor extends EmptyVisitor {
         appPermset = store;
     }
 
-    /**
-     * Implemented method of interface org.apache.bcel.classfile.Visitor.
-     */
+
     public void visitJavaClass(JavaClass jc) {
-        jc.getConstantPool().accept(this);
-        Method[] methods = jc.getMethods();
-        for (int i = 0; i < methods.length; i++) {
-            methods[i].accept(this);
-        }
+        //TODO: TBD
     }
     /**
      * Implemented method of interface org.apache.bcel.classfile.Visitor.
      */
     public void visitConstantPool(ConstantPool constantPool) {
-        for (int i = 0; i < constantPool.getLength(); i++) {
-            Constant constant = constantPool.getConstant(i);
-            if (constant == null) {
-                continue;
-            }
-        }
+        //TODO: TBD
     }
     /**
      * Implemented method of interface org.apache.bcel.classfile.Visitor.
      */
     public void visitMethod(Method method) {
-        MethodGen mg = new MethodGen(method, javaClass.getClassName(), constants);
-        MethodVisitor visitor = new MethodVisitor(mg, javaClass, appPermset);
-        visitor.visit();
+        //TODO: TBD
     }
 
     /**
      * Method to start class exploration.
      */
     public void start() {
-        visitJavaClass(javaClass);
+        //TODO: TBD
     }
 }
